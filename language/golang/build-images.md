@@ -18,7 +18,7 @@ all other resources required by your application.
 
 To complete this tutorial, you need the following:
 
-- Go version 1.19 or later. Visit the [download page for Go](https://golang.org/dl/){:target="_blank" rel="noopener" class="_"} first and install the toolchain.
+- Go version 1.21 or later. Visit the [download page for Go](https://golang.org/dl/){:target="_blank" rel="noopener" class="_"} first and install the toolchain.
 - Docker running locally. Follow the [instructions to download and install Docker](../../desktop/index.md).
 - An IDE or a text editor to edit files. [Visual Studio Code](https://code.visualstudio.com/){: target="_blank" rel="noopener" class="_"} is a free and popular choice but you can use anything you feel comfortable with.
 - A Git client. We'll use a command-line based `git` client throughout this module, but you are free to use whatever works for you.
@@ -145,7 +145,7 @@ We then tell Docker what *base image* we would like to use for our application:
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-FROM golang:1.19
+FROM golang:1.20.5
 ```
 
 Docker images can be inherited from other images. Therefore, instead of creating
@@ -207,7 +207,7 @@ inside the image.
 RUN go mod download
 ```
 
-At this point, we have a Go toolchain version 1.19.x and all our Go dependencies
+At this point, we have a Go toolchain version 1.20.5 and all our Go dependencies
 installed inside the image.
 
 The next thing we need to do is to copy our source code into the image. We’ll
@@ -249,7 +249,7 @@ Here's the complete `Dockerfile`:
 ```dockerfile
 # syntax=docker/dockerfile:1
 
-FROM golang:1.19
+FROM golang:1.20.5
 
 # Set destination for COPY
 WORKDIR /app
@@ -288,7 +288,7 @@ make sure that the comments follow *after* any directives that you may have used
 # syntax=docker/dockerfile:1
 # A sample microservice in Go packaged into a container image.
 
-FROM golang:1.19
+FROM golang:1.20.5
 
 # ...
 ```
@@ -323,8 +323,8 @@ The following is just an example of what these messages may look like.
  => CACHED docker-image://docker.io/docker/dockerfile:1@sha256:39b85bbfa7536a5feceb7372a0817649ecb2724562a38360f4d6a7782a409b14            0.0s
  => [internal] load build definition from Dockerfile                                                                                       0.0s
  => [internal] load .dockerignore                                                                                                          0.0s
- => [internal] load metadata for docker.io/library/golang:1.19                                                                             0.7s
- => [1/6] FROM docker.io/library/golang:1.19@sha256:5d947843dde82ba1df5ac1b2ebb70b203d106f0423bf5183df3dc96f6bc5a705                       0.0s
+ => [internal] load metadata for docker.io/library/golang:1.20.5                                                                             0.7s
+ => [1/6] FROM docker.io/library/golang:1.20.5@sha256:fd8d0f8f05c0254d80cfb040e2c6351e477593b7dbf24b0d495ba1e97aa14146                       0.0s
  => [internal] load build context                                                                                                          0.0s
  => => transferring context: 6.08kB                                                                                                        0.0s
  => CACHED [2/6] WORKDIR /app                                                                                                              0.0s
@@ -461,7 +461,7 @@ content:
 # syntax=docker/dockerfile:1
 
 # Build the application from source
-FROM golang:1.19 AS build-stage
+FROM golang:1.20.5 AS build-stage
 
 WORKDIR /app
 
